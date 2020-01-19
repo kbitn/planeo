@@ -1,0 +1,54 @@
+.proposed-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 1s ease;
+  &:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  }
+  position: relative;
+  height: 60px;
+  border-radius: 3px;
+  &-info {
+    width: 100%;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    opacity: .7;
+    font-weight: lighter;
+    text-indent: 0.03em;
+  }
+  h3 {
+    margin: 0;
+    font-weight: 400;
+    opacity: 0.9;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 3px;
+  }
+  img {
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .proposed-organizer {
+    padding: 0.4rem;
+    position: absolute;
+    top: 26%;
+    right: 7px;
+    border-radius: 50%;
+    transition: box-shadow 1.5s ease;
+    transition: color 0.8s ease;
+    transition: background-color 0.8s ease;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.0);
+    background-color: white;
+    color: #FF101F;
+    &:hover {
+      background-color: #FF101F;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+      color: white;
+    }
+  }
+}

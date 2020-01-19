@@ -1,0 +1,17 @@
+<div class="modal fade" id="newComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="text-center mt-3">
+        <h5 class="modal-title text-dark" id="exampleModalLongTitle"><strong>Write a Comment</strong></h5>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@event, @comment] do |f| %>
+          <%= f.input :content %>
+          <div class="modal-footer justify-content-center p-1">
+            <%= f.button :submit, value: "Send", class: "primary-button w-100" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

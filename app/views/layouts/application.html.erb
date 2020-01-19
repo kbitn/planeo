@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= meta_title %></title>
+    <%= favicon_link_tag asset_path('Planeo_fav.png') %>
+    <%= csrf_meta_tags %>
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:description" content="Planning with friends, made easy." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= asset_url('og_image-min.png') %>" />
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+  </head>
+  <body class="<% if @homepage %> back <% else %> not-back <% end %>" id="<%= params[:controller] %>/<%= params[:action] %>">
+    <%= if @navbar_hidden
+          render 'shared/home-nav'
+        else
+          render 'shared/navbar'
+        end %>
+    <%= yield %>
+    <%= render 'shared/flashes' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<div class="navbar navbar-light navbar-lewagon" style="background-color: #FF101F; z-index: 1;">
+  <% if user_signed_in? %>
+    <%= link_to groups_path, class: "planeo-logo" do %>
+      <%= image_tag asset_url("planeo.png")%>
+    <% end %>
+  <% else %>
+    <%= link_to root_path, class: "planeo-logo" do %>
+      <%= image_tag asset_url("planeo.png")%>
+    <% end %>
+  <% end %>
+
+
+
+    <ul class="m-0 pr-2">
+      <% if user_signed_in? %>
+        <% if current_user.photo.present? %>
+          <li class="nav-item dropdown">
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.photo %>" />
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Groups", groups_path, class: "dropdown-item" %>
+            <%= link_to "My Events", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://res.cloudinary.com/dunhv8wwe/image/upload/v1574767244/Planeo_avatar_final_t7943g.png" />
+          <!-- <li><%#= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> -->
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Edit Profile", edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Groups", groups_path, class: "dropdown-item" %>
+            <%= link_to "My Events", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% end %>
+      <% else %>
+        <li class="nav-item d-flex">
+            <%= link_to "SIGN IN", new_user_session_path, class: "nav-link pr-1" %>
+          </li>
+      <% end %>
+    </ul>
+</div>
+

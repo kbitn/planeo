@@ -1,0 +1,79 @@
+.box-w {
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  .back-button {
+    left: 22px;
+    top: 15px;
+    p {
+      color: rgb(50, 50, 50);
+      text-shadow: none;
+    }
+  }
+  .primary-button {
+    padding: 1rem 2rem;
+
+  }
+}
+
+.container-fluid {
+  .head {
+   h2 {
+  color: rgb(50, 50, 50);
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+      }
+  }
+}
+
+.bottom-text {
+  color: rgb(50, 50, 50);
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+  a {
+    color: #FF101F;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.head {
+  h2 {
+  color: rgb(50, 50, 50);
+  letter-spacing: 0.3rem;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.photo-icon {
+  font-size: 45px;
+}
+
+.form-control-file {
+  display: none;
+}
+
+.file .optional {
+  border: solid 5px #FF101F;
+  background-position: center;
+  background-size: cover;
+  margin: 0 !important;
+  width: 120px;
+  padding: 33px;
+  height: 120px;
+  color: #FF101F;
+  border-radius: 3%;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  // border: 10px solid #F25004;
+  transition: all 0.5s ease;
+  &:hover{
+    text-decoration: none;
+    background-color: #F25004;
+    color: white;
+
+  }
+}
+

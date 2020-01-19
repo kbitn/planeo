@@ -1,0 +1,9 @@
+<% if event_date.votes.exists?(user: current_user) %>
+  <%= link_to vote_path(event_date.votes.find_by(user: current_user)), method: :delete, remote: true do %>
+    <i class="far fa-check-square"></i>
+  <% end %>
+<% else %>
+  <%= link_to event_date_votes_path(event_date), method: :post, remote: true do %>
+    <i class="far fa-square"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,28 @@
+  <div class="container mt-4 mb-4">
+  <div class="text-center head">
+    <h2>EDIT PROFILE</h2>
+  </div>
+    <%= simple_form_for (@user) do |f| %>
+    <div class="box-w mt-3">
+
+      <div class="form-inputs">
+        <div class="text-center">
+        <%= f.input :photo, label: ('<i class="fas fa-camera photo-icon"></i>').html_safe %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.input :name, placeholder: "Name"%>
+        <%= f.input :email, placeholder: "Email"%>
+        </div>
+      </div>
+
+    <div class="submit text-center mt-5">
+      <%= f.button :submit, value: "Update Profile", class: "primary-button"%>
+    <% end %>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= link_to "Go Back", groups_path, class: "secondary-button" %>
+    </div>
+
+  </div>
+
+</div>

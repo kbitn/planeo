@@ -1,0 +1,7 @@
+var wrapper = document.getElementById('vote_button_<%= @event_date.id %>');
+var counter = document.getElementById('counter_<%= @event_date.id %>');
+
+wrapper.innerHTML = "<%= j render('vote_button', event_date: @event_date) %>";
+var current_number = Number.parseInt(counter.innerText);
+current_number -= 1;
+counter.innerText = current_number;

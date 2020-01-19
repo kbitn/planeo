@@ -1,0 +1,49 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "components/temp";
+@import "pages/index";
+
+@import "views/events/show";
+@import "views/groups/show";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.back{
+  min-height: 110vh;
+  /* The image used */
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset_url("body-background.jpeg");
+
+  /* Full height */
+  background-repeat: no-repeat;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}
+
+.not-back {
+  min-height: 110vh;
+  /* The image used */
+  background-image: linear-gradient(rgba(255,255,255, 0.9),rgba(255, 255, 255, 0.9)), asset_url("body-background.jpeg");
+
+  /* Full height */
+  background-repeat: no-repeat;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}
+.fa-trash:before {
+color: #adb5bd;
+}

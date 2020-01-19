@@ -1,0 +1,231 @@
+<%= content_for(:title, "My upcoming events") %>
+<div class="main-container-two">
+  <div class="text-center head mt-3 mb-4">
+    <h2 class="mt-4">MY UPCOMING EVENTS</h2>
+  </div>
+    <% if @myevents.length > 0 %>
+
+
+<% if @todayevs.length > 0 %>
+<h4 class="mt-4">Today</h4>
+<div class="row">
+    <% @todayevs.each do |event| %>
+    <div class="col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+            <div class="d-flex pl-3 align-items-center" >
+            <% if event.confirmed_date.present? %>
+                <div class="text-center">
+                  <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                  <h3><%= event.day %></h3>
+                </div>
+              <% else %>
+                  <div class="text-center">
+                  <h3 style="color: #FF101F;">TBC</h3>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+              </div>
+          </div>
+            <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> (<%=event.group.name.upcase %>)</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @tomorrowevs.length > 0 %>
+<h4 class="mt-4">Tomorrow</h4>
+<div class="row">
+    <% @tomorrowevs.each do |event| %>
+    <div class="col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+            <div class="d-flex pl-3 align-items-center" >
+            <% if event.confirmed_date.present? %>
+                <div class="text-center">
+                  <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                  <h3><%= event.day %></h3>
+                </div>
+              <% else %>
+                  <div class="text-center">
+                  <h3 style="color: #FF101F;">TBC</h3>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+              </div>
+          </div>
+            <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> (<%=event.group.name.upcase %>)</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @weekevs.length > 0 %>
+<h4 class="mt-4">This Week's Events</h4>
+<div class="row">
+    <% @weekevs.each do |event| %>
+    <div class="col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+            <div class="d-flex pl-3 align-items-center" >
+            <% if event.confirmed_date.present? %>
+                <div class="text-center">
+                  <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                  <h3><%= event.day %></h3>
+                </div>
+              <% else %>
+                  <div class="text-center">
+                  <h3 style="color: #FF101F;">TBC</h3>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+              </div>
+          </div>
+            <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> (<%=event.group.name.upcase %>)</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @restofevs.length > 0 %>
+<h4 class="mt-4">Future Events</h4>
+<div class="row">
+    <% @restofevs.each do |event| %>
+    <div class="col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+            <div class="d-flex pl-3 align-items-center" >
+            <% if event.confirmed_date.present? %>
+                <div class="text-center">
+                  <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                  <h3><%= event.day %></h3>
+                </div>
+              <% else %>
+                  <div class="text-center">
+                  <h3 style="color: #FF101F;">TBC</h3>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+              </div>
+          </div>
+            <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> (<%=event.group.name.upcase %>)</p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @pastevs.length > 0 %>
+<h4 class="mt-4">Past Events</h4>
+<div class="row">
+    <% @pastevs.each do |event| %>
+    <div class="col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+            <div class="d-flex pl-3 align-items-center" >
+            <% if event.confirmed_date.present? %>
+                <div class="text-center">
+                  <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                  <h3><%= event.day %></h3>
+                </div>
+              <% else %>
+                  <div class="text-center">
+                  <h3 style="color: #FF101F;">TBC</h3>
+                </div>
+              <% end %>
+              <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+              </div>
+          </div>
+            <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> (<%=event.group.name.upcase %>)</p>
+        </div>
+      <% end %>
+    <% end %>
+    <% end %>
+    <% else %>
+    <p>You have no upcoming events yet.</p>
+  </div>
+<% end %>
+</div>

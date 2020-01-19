@@ -1,0 +1,26 @@
+<%= content_for(:title, "Your Group details") %>
+
+<div class="container mt-4 mb-4">
+  <div class="text-center">
+    <h2>Edit Group Details</h2>
+  </div>
+
+    <%= simple_form_for (@group) do |f| %>
+
+    <div class="box-w mt-3">
+
+      <div class="form-inputs">
+        <%= f.input :name, placeholder: "Name of group"%>
+        <%= f.input :photo, placeholder: "URL of photo" %>
+      </div>
+
+    <div class="submit text-center">
+      <%= f.button :submit, class: "custom-button padding-right-left"%>
+    <% end %>
+    </div>
+
+    <div class="text-center mt-3">
+      <%= link_to "Go Back", groups_path, class: "custom-button" %>
+    </div>
+  </div>
+</div>

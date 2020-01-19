@@ -1,0 +1,54 @@
+<%= simple_form_for [@event] do |f| %>
+  <div class="box-w mt-3">
+     <% if @event.persisted?  %>
+          <%= link_to event_path(@event), class: "back-button" do %>
+            <p><i class="fas fa-chevron-left"></i> Back</p>
+          <% end %>
+        <% else %>
+          <%= link_to group_path(@event.group), class: "back-button" do %>
+            <p><i class="fas fa-chevron-left"></i> Back</p>
+          <% end %>
+      <% end %>
+    <div class="form-inputs">
+        <div class="text-center mt-3 mb-3">
+          <%= f.input :photo, label: ('<i class="fas fa-camera photo-icon"></i>').html_safe %>
+          <%= f.input :photo_cache, as: :hidden %>
+        </div>
+      <%= f.input :name, label: "What's the plan?", placeholder: "e.g. Brunch at Carmencita"  %>
+          <%= f.input :address, as: :hidden %>
+      </div>
+      <div>
+        <%= f.label :name, "Where is it happening?" %>
+      </div>
+     <div
+      id="map"
+      style="width: 100%;
+      height: 200px;"
+      data-marker="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    <div>
+    <% if @action == "create" || @event.state == "proposed" %>
+      <div>
+        <%= f.label :name, "When is it happening?" %>
+        <p><em>Choose date options.</em></p>
+      </div>
+      <div class="datebars">
+        <%= f.simple_fields_for :event_dates do |p| %>
+          <%= p.input :date, label: false, as: :date, html5: true, required: false, input_html: { data: { 'date-format' => 'DD MM YYYY' }} %>
+          <%= link_to 'Add date', '#', id: 'add-date-link', class: 'btn btn-outline-primary btn-small btn-block' %>
+        <% end %>
+      </div>
+      <% end %>
+      <div>
+        <%= f.input :time, label: "At what time?", placeholder: "11:00am", as: :string %>
+      </div>
+      <div>
+        <%= f.input :description, label: "Any comment?", placeholder: "e.g. Don't be late!", as: :text %>
+      </div>
+    </div>
+    <div class="submit text-center">
+      <%= f.button :submit, value: "Organize",class: "primary-button padding-right-left"%>
+    <% end %>
+    </div>
+  </div>

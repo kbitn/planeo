@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" type="image/png" href="images/mascotte.png"/>
+  <title>Planeo - 404 Error</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+     h1 {
+      opacity: 0.8;
+      font-size: 25px;
+      padding: 10px 0px;
+      color: #1c5acc;
+      text-align: -webkit-center;
+      margin: 0px 30px;
+    }
+  .principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px;
+  }
+
+  .principal img {
+    width: 100%;
+  }
+
+  .button:hover {
+    background: #eb653a;
+    color: white;
+  }
+
+  .button {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 16px 24px;
+    border-radius: 4px;
+    background: #eb653a;
+    transition: background 0.3s ease;
+    margin-top: 40px;
+  }
+  .text {
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
+    .principal {
+      display: block;
+      text-align: center;
+    }
+    .principal img {
+      width: 60%;
+    }
+  }
+
+  </style>
+</head>
+<body>
+  <!-- This file lives in public/404.html -->
+    <img src="/images/planeo_logo_o.png" width="200" alt="" >
+  <div class="principal">
+    <div class="image">
+      <img src="/images/mascotte.png" alt="" >
+    </div>
+    <div class="text">
+      <h1>Oops! This page doesn't exist! My bad!</h1>
+      <button onclick="window.location.href = 'http://www.planeo.xyz'" class="button">Back to homepage</button>
+  </div>
+    </div>
+  </div>
+</body>
+</html>

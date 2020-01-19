@@ -1,0 +1,14 @@
+<div class="navbar navbar-lewagon justify-content-end" style="background-color: transparent;">
+    <ul class="m-0 pr-2">
+      <% if user_signed_in? %>
+        <li class="nav-item d-flex">
+            <%= link_to "Your Groups", groups_path, class: "nav-link pr-1 text-white" %>
+          </li>
+      <% else %>
+        <li class="nav-item d-flex">
+            <%= link_to "SIGN IN", new_user_session_path, class: "nav-link pr-1 text-white" %>
+          </li>
+      <% end %>
+    </ul>
+</div>
+

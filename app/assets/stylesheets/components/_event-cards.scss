@@ -1,0 +1,75 @@
+.custom-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  height: 120px;
+  border-radius: 3px;
+  transition: box-shadow 1s ease;
+  &:hover {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  }
+  &-info {
+    width: 65%;
+    padding: 7% 0;
+  }
+  p {
+    margin: 0;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    opacity: .7;
+    font-weight: lighter;
+    text-indent: 0.03em;
+  }
+  h3 {
+    margin: 0;
+    font-weight: 500;
+    opacity: 0.9;
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 3px;
+  }
+  img {
+    width: 30%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .organizer {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 8px;
+    right: 7px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.container {
+  max-width: 800px !important;
+}
+.main-container-two {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@include media-breakpoint-up(lg) {
+    .main-container-two {
+    max-width: 800px;
+    margin: 0 auto;
+  }}
+@include media-breakpoint-up(xl) {
+     .main-container-two {
+    max-width: 810px;
+    margin: 0 auto;
+  }}
+
+.loc {
+  width: 100%;
+}
+
+@include media-breakpoint-up(sm) {
+    .loc {
+    width: 50%;
+  }}
+

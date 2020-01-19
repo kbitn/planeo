@@ -1,0 +1,191 @@
+<%= content_for(:title, @group.name) %>
+
+<%= render "shared/modal" %>
+
+<div class="main-container-two">
+  <div class="text-center pt-2 border-bottom pb-2 group-photos d-flex justify-content-center w-100">
+    <% @group.users.first(10).each do |user| %>
+    <img src="<%= user.photo %>" class="photos" alt="" style="width: 40px; border-radius: 50%;">
+    <% end %>
+  </div>
+  <div class="text-center head mt-3 mb-3">
+    <h2 class="mt-4"><strong><%= @group.name.upcase %></strong></h2>
+  </div>
+    <% if @myevents.length > 0 %>
+      <div class="text-center head mt-3 mb-4">
+        <h2 class="mt-4">EVENTS I'M ORGANIZING</h2>
+      </div>
+      <div class="row">
+          <% @myevents.each do |event| %>
+          <div class="col-xl-6 col-12">
+            <%= link_to event_path(event) do %>
+              <div class="custom-card mb-0 d-flex mt-2 mr-2 ml-2 align-items-center">
+                <% unless event.photo.identifier.nil? %>
+                  <img src="<%= event.photo %>">
+                <% end %>
+                <% if event.photo.identifier.nil? %>
+                  <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+                <% else %>
+                  <div class="custom-card-info m-0">
+                <% end %>
+                <div class="d-flex pl-3 align-items-center" >
+                  <% if event.confirmed_date.present? %>
+                      <div class="text-center">
+                        <h3 style="color: #FF101F;"><%= event.monthname.upcase %></h3>
+                        <h3><%= event.day %></h3>
+                      </div>
+                    <% else %>
+                        <div class="text-center">
+                        <h3 style="color: #FF101F;">TBC</h3>
+                      </div>
+                    <% end %>
+                  <div>
+                    <h3 class="m-0 pl-3"><%= event.name %></h3>
+                    <% if event.description.nil? || event.description.length > 44 || event.description == "" %>
+                      <p class="m-0 pl-3"><%= event.address %></p>
+                    <% else %>
+                      <p class="m-0 pl-3"><%= event.description %></p>
+                    <% end %>
+                  </div>
+                </div>
+                  </div>
+              </div>
+                <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+<% if @organizedevents.length > 0 %>
+  <div class="text-center head mt-3 mb-4">
+    <h2 class="mt-4">ALL UPCOMING EVENTS</h2>
+  </div>
+  <div class="row">
+      <% @organizedevents.each do |event| %>
+      <div class="col-xl-6 col-12">
+        <%= link_to event_path(event) do %>
+          <div class="custom-card d-flex m-2 align-items-center">
+            <% unless event.photo.identifier.nil? %>
+            <img src="<%= event.photo %>">
+            <% end %>
+            <% if event.photo.identifier.nil? %>
+              <div class="custom-card-info w-100 text-center m-0 d-flex flex-column justify-content-center align-items-center">
+            <% else %>
+              <div class="custom-card-info m-0">
+            <% end %>
+              <div class="d-flex pl-3 align-items-center" >
+                <% if event.confirmed_date.present? %>
+                    <div class="text-center">
+                      <h3 style="font-weight: lighter; color: #FF101F;"><%= event.monthname.upcase %></h3>
+                      <h3><%= event.day %></h3>
+                    </div>
+                  <% else %>
+                      <div class="text-center">
+                      <h3 style="color: #FF101F;">TBC</h3>
+                    </div>
+                  <% end %>
+                <div>
+                <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <% if event.description.nil? || event.description == "" %>
+                  <p class="m-0 pl-3"><%= event.address %></p>
+                <% else %>
+                  <p class="m-0 pl-3"><%= event.description %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          </div>
+        <p class="pb-2 pl-2 pt-0" style="opacity: .4; letter-spacing: 2px;margin-top: 7px; font-size: 0.8rem;">ORGANIZED BY: <%=event.organizer.name.upcase %> </p>
+        </div>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+  <div class="d-flex align-items-center justify-content-center text-center m-3" style="width: 98%;">
+    <a class="primary-button w-100 text-white" data-toggle="modal" data-target="#exampleModalCenter">
+      New event
+    </a>
+</div>
+<% if @proposedevents.length > 0 %>
+  <div class="text-center head mt-3 mb-4">
+    <h2>WISHLIST</h2>
+  </div>
+  <div class="row" style="min-width: 100%;">
+      <% @proposedevents.each do |event| %>
+          <div class="col-lg-6 col-12">
+            <%= link_to edit_event_path(event) do %>
+              <div class="proposed-card d-flex m-1 align-items-center">
+                  <div class="proposed-card-info m-0">
+                    <h3 class="m-0 pl-3"><%= event.name %></h3>
+                <i class="fas fa-plus proposed-organizer"></i>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+     <% end %>
+  <div class="d-flex align-items-center justify-content-center text-center m-3" style="width: 98%;">
+    <a class="primary-button w-100 text-white" data-toggle="modal" data-target="#exampleModalCode">
+      Invite a Friend
+    </a>
+</div>
+</div>
+  <div class="text-right">
+  <% if @group.administrator == current_user %>
+    <div data-toggle="modal" data-target="#exampleModal">
+      <div class="text-center text-danger">
+        <p>Delete Group</p>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create a New Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@group, @event] do |f| %>
+          <%= f.input :name, label: "What's the plan?", placeholder: "e.g. Brunch at Ojalá" %>
+      </div>
+      <div class="modal-footer justify-content-center">
+          <%= f.button :submit, "Propose", class: "secondary-button"%>
+          <%= f.button :submit, "Organize", class: "primary-button"%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalCode" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Invite a Friend</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+      <div class="modal-body">
+        <h5>Send this link to your friends to invite them to this group!</h5>
+        <div class="d-flex">
+          <div style="width: 66%;">
+            <%= text_field_tag :code, invite_url(code: @group.code), id: 'invite-link', class: 'form-control form-control-lg' %>
+          </div>
+
+          <button class="btn btn-danger" style="width: 34%;"data-clipboard-target="#invite-link">
+            Copy link
+          </button>
+        </div>
+      </div>
+
+      <script>new ClipboardJS('.btn');</script>
+
+    </div>
+  </div>
