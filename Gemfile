@@ -16,7 +16,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'geocoder'
 
 gem 'exception_handler', '~> 0.8.0.0'
